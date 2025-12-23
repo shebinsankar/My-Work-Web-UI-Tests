@@ -3,9 +3,12 @@ from typing import List
 
 
 class ProductsPage(BasePage):
-    TITLE = '.title'
-    SORT_SELECT = '.product_sort_container'
-    ITEM = '.inventory_item'
+    TITLE = "[data-test='title']"
+    SORT_SELECT = "[data-test='product-sort-container']"
+    ITEM = "[data-test = 'inventory-item-description']"
+
+    def getTitle(self) -> str:
+        return self.page.locator(self.TITLE).inner_text()
 
     def sort_by(self, value: str):
         # value examples: "Price (low to high)", "Name (Z to A)"
@@ -22,8 +25,8 @@ class ProductsPage(BasePage):
 
     def add_to_cart_by_name(self, name: str):
         locator = self.page.locator(
-            f".inventory_item:has-text(\"{name}\") button:has-text('Add to cart')")
+            f".inventory_item:has-text(\"{name}\") button[data-test^=\"add-to-cart\"]")
         locator.first.click()
 
     def go_to_cart(self):
-        self.click('#shopping_cart_container a')
+        self.click("[data-test='shopping-cart-link']")

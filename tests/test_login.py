@@ -10,5 +10,5 @@ def test_login_success(page):
 
     # Verify we land on the products/inventory page by checking title and product items
     products = ProductsPage(page)
-    assert page.locator(products.TITLE).inner_text() == 'Products'
+    assert products.getTitle() == 'Products'
     assert page.locator(products.ITEM).count() > 0
