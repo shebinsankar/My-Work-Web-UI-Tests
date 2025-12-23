@@ -1,6 +1,8 @@
+import pytest
 from pages import LoginPage, ProductsPage, CartPage, CheckoutPage
 
 
+@pytest.mark.regression
 def test_saucedemo_checkout_flow(page):
 
     login = LoginPage(page)

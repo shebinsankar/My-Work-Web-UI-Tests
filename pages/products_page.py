@@ -3,6 +3,7 @@ from typing import List
 
 
 class ProductsPage(BasePage):
+    TITLE = '.title'
     SORT_SELECT = '.product_sort_container'
     ITEM = '.inventory_item'
 
