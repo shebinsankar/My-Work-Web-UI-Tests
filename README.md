@@ -22,11 +22,11 @@ The test suite uses a `page` fixture in `conftest.py` which launches a Chromium-
 
 Environment variables (optional):
 - `SLOW_MO_MS`: slow Playwright actions by N ms (default `200`).
-- `HEADLESS`: `true`/`false` to run headless (default `false`).
+- `HEADLESS`: `true`/`false` to run headless (default `true`).
 - `BROWSER_CHANNEL`: browser channel name (default `chrome`).
 
 Pytest CLI options (override env vars):
-- `--headed` : run headed (equivalent to `HEADLESS=false`).
+- `--headed` : run headed (equivalent to `HEADLESS=false`). Without this flag, tests run headless by default.
 - `--slow-mo=N` : slow down actions by N milliseconds.
 - `--browser=name` : browser channel to use (e.g. `chrome`, `msedge`).
 
@@ -61,7 +61,7 @@ Artifacts
 
 
 
-## Suite Design: Smoke and Regression tests (for CI)
+## Suite Design: How would you split this suite into smoke vs. regression tests for CI?
 
 We can use pytest markers to split tests to smoke and regression tests 
 
@@ -77,7 +77,7 @@ How to use:
    - `python -m pytest -m smoke -q`
    - `python -m pytest -m "regression or not smoke" -q`
 
-## Remove flaky tests:   
+## Flakiness: What would you do to minimise flaky UI tests in a real project?
 
 1. Use stable selectors(data-testid, data-cy, data-test). Avoid brittle selectors such as texts.
 2. Use in-built methods such as wait for load, wait for response, mainly during navigations.
@@ -91,7 +91,7 @@ How to use:
 10. Have proper teardown/cleanup code.
 
 
-## Scaling: Refactorings for dozens of flows
+## Scaling: If this suite grew to dozens of flows, what refactorings or patterns would you introduce?
 
 Apply these features to keep the suite maintainable:
 

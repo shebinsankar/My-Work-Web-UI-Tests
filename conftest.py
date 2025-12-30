@@ -7,7 +7,7 @@ def pytest_addoption(parser):
     parser.addoption(
         "--headed",
         action="store_true",
-        help="Run browser headed (default: headed)",
+        help="Run browser headed (default: headless)",
     )
     parser.addoption(
         "--record-video",
@@ -37,11 +37,11 @@ def playwright_instance():
 @pytest.fixture(scope="session")
 def browser(playwright_instance, request):
     config = request.config
-    # headed flag overrides env var; default is headed (headless=False)
+    # headed flag overrides env var; default is headless (headless=True)
     if config.getoption("headed"):
         headless = False
     else:
-        headless = os.getenv('HEADLESS', 'false').lower() in (
+        headless = os.getenv('HEADLESS', 'true').lower() in (
             '1', 'true', 'yes')
 
     slow_opt = config.getoption("slow_mo")
