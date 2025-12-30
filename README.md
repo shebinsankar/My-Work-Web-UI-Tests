@@ -89,6 +89,7 @@ How to use:
 8. Skip the tests until flakyness is fixed.
 9. Use retries to avoid infra/network issues during test.
 10. Have proper teardown/cleanup code.
+11. Fix viewport/screen resolution to avoid responsive layout flakiness. Pin browser versions in CI to avoid auto-update issues.
 
 
 ## Scaling: If this suite grew to dozens of flows, what refactorings or patterns would you introduce?
